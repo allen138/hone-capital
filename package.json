@@ -1,0 +1,24 @@
+{
+  "name": "hone-capital",
+  "version": "1.0.0",
+  "description": "cryptocurrency",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allen138/hone-capital.git"
+  },
+  "author": "Allen Maxwell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allen138/hone-capital/issues"
+  },
+  "homepage": "https://github.com/allen138/hone-capital#readme",
+  "dependencies": {
+    "chart.js": "^2.8.0",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4"
+  }
+}

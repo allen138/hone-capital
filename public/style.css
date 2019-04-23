@@ -1,0 +1,56 @@
+.jumbotron{
+    background-image: url(./img/crypto-jumbotron.jpg);
+    background-size: cover;
+}
+.display-4, .lead{
+    font-family: 'Roboto Mono', monospace;
+    color: whitesmoke;
+}
+.typewrite{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: whitesmoke;
+    text-decoration: none;
+}
+.typewrite:hover{
+    text-decoration: none;
+    color: whitesmoke;
+}
+.typewrite > .wrap { 
+    border-right: 2px solid whitesmoke;
+}
+.table-label{
+    font-size: 24px;
+    margin-left: 150px;
+    font-weight: 700;
+}
+.table{
+    margin: 0 auto;
+    width: 80%;
+    padding: 10px;
+    border: 1px solid lightgray;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.myChartDiv{
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;  
+}
+.mySecondChartDiv{
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+@media (max-width: 1000px) {
+    .grid{
+        grid-template-columns: auto;
+    }
+}
