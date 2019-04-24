@@ -1,107 +1,169 @@
-body{
-    background-image: url(./img/lightpaperfibers.png);
+body {
+  background-image: url(./img/lightpaperfibers.png);
 }
-.jumbotron{
-    background-image: url(./img/crypto-jumbotron.jpg);
-    background-size: cover;
+.jumbotron {
+  background-image: url(./img/crypto-jumbotron.jpg);
+  background-size: cover;
 }
-.display-4, .lead{
-    font-family: 'Roboto Mono', monospace;
-    color: whitesmoke;
+.display-4,
+.lead {
+  font-family: "Roboto Mono", monospace;
+  color: whitesmoke;
 }
-.typewrite{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    color: whitesmoke;
-    text-decoration: none;
+.typewrite {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 20px;
+  color: whitesmoke;
+  text-decoration: none;
 }
-.typewrite:hover{
-    text-decoration: none;
-    color: whitesmoke;
+.typewrite:hover {
+  text-decoration: none;
+  color: whitesmoke;
 }
-.typewrite > .wrap { 
-    border-right: 2px solid whitesmoke;
+.typewrite > .wrap {
+  border-right: 2px solid whitesmoke;
 }
-.table-label{
-    font-size: 24px;
-    margin-left: 150px;
-    font-weight: 700;
+.table-label {
+  font-size: 24px;
+  margin-left: 150px;
+  font-weight: 700;
 }
-.table{
-    margin: 0 auto;
-    width: 80%;
-    padding: 10px;
-    border: 1px solid lightgray;
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+.table {
+  margin: 0 auto;
+  width: 80%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 }
-.myChartDiv{
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 15px;  
+.myChartDiv,
+.mySecondChartDiv,
+.myThirdChartDiv,
+.myFourthChartDiv {
+  width: 500px;
+  height: 500px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
 }
-.mySecondChartDiv{
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 15px;
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
 }
-.myThirdChartDiv{
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 15px;
+footer {
+  position: relative;
 }
-.myFourthChartDiv{
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 15px;
+.footer-text {
+  color: azure;
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
-.grid{
-    display: grid;
-    grid-template-columns: auto auto;
+.footer-img {
+  width: 100%;
 }
-footer{
-    position: relative;
+.form-group {
+  position: relative;
+  margin: 0 auto;
 }
-.footer-text{
-    color: azure;
-    position: absolute;
-    bottom: 38px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%)
+#form-label {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
 }
-.form-group{
-    position: relative;
-    margin: 0 auto;
+#submit {
+  position: absolute;
+  right: -40px;
+  top: 35px;
 }
-#form-label{
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
+.sorting {
+  margin-left: 400px;
+  margin-right: 10px;
+  font-weight: 620;
+  font-size: 16px;
 }
-#submit{
-    position: absolute;
-    right: -40px;
-    top: 35px;
-}
-.sorting{
-    margin-left: 400px;
-    margin-right: 10px;
-    font-weight: 620;
-    font-size: 16px;
-}
-.sortBtn{
-    margin-right: 15px;
+.sortBtn {
+  margin-right: 15px;
 }
 @media (max-width: 1000px) {
-    .grid{
-        grid-template-columns: auto;
-    }
+  .grid {
+    grid-template-columns: auto;
+  }
+  .footer-img {
+    width: 100%;
+  }
+  .footer-text {
+    bottom: 15px;
+  }
+}
+@media (max-width: 794px) {
+  #submit {
+    top: 62px;
+  }
+}
+@media (max-width: 767px) {
+  #submit {
+    top: 35px;
+    right: 12%;
+  }
+  #dropdown {
+    width: 80%;
+  }
+  .table-label {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
+@media (max-width: 590px) {
+  .footer-text {
+    bottom: 10px;
+  }
+}
+@media (max-width: 527px) {
+  .myChartDiv,
+  .mySecondChartDiv,
+  .myThirdChartDiv,
+  .myFourthChartDiv {
+    width: 90%;
+    height: 400px;
+  }
+  .footer-text {
+    bottom: 4px;
+    font-size: 12px;
+  }
+  .display-4 {
+    font-size: 40px;
+  }
+  #submit {
+    right: 10%;
+  }
+}
+@media (max-width: 411px) {
+  .myChartDiv,
+  .mySecondChartDiv,
+  .myThirdChartDiv,
+  .myFourthChartDiv {
+    width: 80%;
+    height: 400px;
+  }
+  #dropdown {
+    width: 60%;
+    margin-left: 40px;
+  }
+  #submit {
+    top: 35px;
+    right: 18%;
+  }
+  .footer-text {
+    font-size: 10px;
+  }
+}
+@media (max-width: 380px) {
+    #submit {
+        top: 62px;
+        right: 16%;
+      }
 }
