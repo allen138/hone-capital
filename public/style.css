@@ -1,3 +1,6 @@
+body{
+    background-image: url(./img/lightpaperfibers.png);
+}
 .jumbotron{
     background-image: url(./img/crypto-jumbotron.jpg);
     background-size: cover;
@@ -45,9 +48,34 @@
     margin: 0 auto;
     margin-top: 15px;
 }
+.myThirdChartDiv{
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.myFourthChartDiv{
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
 .grid{
     display: grid;
     grid-template-columns: auto auto;
+}
+footer{
+    position: relative;
+}
+.footer-text{
+    color: azure;
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
 }
 @media (max-width: 1000px) {
     .grid{

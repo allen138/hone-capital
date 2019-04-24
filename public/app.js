@@ -1,5 +1,7 @@
 const key = "e9PqycN4UPM5OgJpDVHwPKpmvVnx3v";
 
+// bar graph
+
 function renderChart(res) {
   let ctx = $("#myChart");
   const data = res.Markets;
@@ -145,6 +147,145 @@ function renderGraph(data) {
     }
   });
 }
+
+// pie graph
+
+function renderPie(res) {
+  let ctx = $("#myThirdChart");
+  const data = res.Markets;
+  const myThirdChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: [
+        data[0].Name,
+        data[1].Name,
+        data[2].Name,
+        data[3].Name,
+        data[4].Name
+      ],
+      datasets: [
+        {
+          label: ["24h Volume"],
+          data: [
+            data[0].Volume_24h,
+            data[1].Volume_24h,
+            data[2].Volume_24h,
+            data[3].Volume_24h,
+            data[4].Volume_24h
+          ],
+          backgroundColor: [
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(66, 134, 244, 0.2)",
+            "rgba(66, 244, 89, 0.2)",
+            "rgba(244, 66, 149, 0.2)",
+            "rgba(255, 206, 86, 0.2)"
+          ],
+          borderColor: [
+            "rgba(75, 192, 192, 1)",
+            "rgba(66, 134, 244, 1)",
+            "rgba(66, 244, 89, 1)",
+            "rgba(244, 66, 149, 1)",
+            "rgba(255, 206, 86, 1)"
+          ],
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      legend: {
+        labels: {
+          fontSize: 24
+        }
+      },
+      title: {
+        display: true,
+        text: "Top 5 BTN 24h",
+        fontSize: 32
+      }
+    }
+  });
+}
+
+function renderRandom(res) {
+  let ctx = $("#myFourthChart");
+  const data = res.Markets;
+  const myFourthChart = new Chart(ctx, {
+    type: "bubble",
+    data: {
+      datasets: [
+        {
+          label: ["BTN"],
+          data: [
+            {
+              x: data[0].Volume_24h,
+              y: data[0].Price,
+              r: 10
+            },
+            {
+              x: data[1].Volume_24h,
+              y: data[1].Price,
+              r: 10
+            },
+            {
+              x: data[2].Volume_24h,
+              y: data[2].Price,
+              r: 10
+            },
+            {
+              x: data[3].Volume_24h,
+              y: data[3].Price,
+              r: 10
+            },
+            {
+              x: data[4].Volume_24h,
+              y: data[4].Price,
+              r: 10
+            },
+            {
+              x: data[5].Volume_24h,
+              y: data[5].Price,
+              r: 10
+            },
+            {
+              x: data[6].Volume_24h,
+              y: data[6].Price,
+              r: 10
+            },
+            {
+              x: data[7].Volume_24h,
+              y: data[7].Price,
+              r: 10
+            },
+            {
+              x: data[8].Volume_24h,
+              y: data[8].Price,
+              r: 10
+            },
+            {
+              x: data[9].Volume_24h,
+              y: data[9].Price,
+              r: 10
+            }
+          ],
+          backgroundColor: "rgb(255, 0, 0)"
+        }
+      ]
+    },
+    options: {
+      legend: {
+        labels: {
+          fontSize: 24
+        }
+      },
+      title: {
+        display: true,
+        text: "Price/Volume",
+        fontSize: 32
+      }
+    }
+  });
+}
+
 // typewriter constructor
 
 var TxtType = function(el, toRotate, period) {
@@ -201,19 +342,7 @@ window.onload = function() {
   }
 };
 
-// Load data from API
-
-var queryURL =
-  "https://www.worldcoinindex.com/apiservice/ticker?key=" +
-  key +
-  "&label=ethbtc-ltcbtc-omnibtc-cajbtc-xmrbtc-dashbtc-ppcbtc-bnbbtc-metbtc-btcdbtc&fiat=btc";
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(res) {
-  createRow(res);
-  renderChart(res);
-});
+// create dynamic table with api data
 
 const createRow = res => {
   const data = res.Markets;
@@ -223,13 +352,28 @@ const createRow = res => {
       $("<td>").text(data[i].Name),
       $("<td>").text(data[i].Price),
       $("<td>").text(data[i].Volume_24h),
-      $("<td>").text(data[i].Timestamp)
+      $("<td>").text(moment.unix(data[i].Timestamp).format("lll"))
     );
     $("#table-data").append(newRow);
   }
 };
 
-var secondQueryUrl =
+// Load data from API
+
+let queryURL =
+  "https://www.worldcoinindex.com/apiservice/ticker?key=" +
+  key +
+  "&label=ethbtc-ltcbtc-omnibtc-cajbtc-xmrbtc-dashbtc-ppcbtc-bnbbtc-metbtc-eosbtc&fiat=btc";
+$.ajax({
+  url: queryURL,
+  method: "GET"
+}).then(function(res) {
+  createRow(res);
+  renderChart(res);
+  renderRandom(res);
+});
+
+let secondQueryUrl =
   "https://www.worldcoinindex.com/apiservice/json?key=" + key;
 $.ajax({
   url: secondQueryUrl,
@@ -238,4 +382,15 @@ $.ajax({
   const data = res.Markets[290];
   console.log(data);
   renderGraph(data);
+});
+
+let thirdQueryUrl =
+  "https://www.worldcoinindex.com/apiservice/ticker?key=" +
+  key +
+  "&label=ethbtc-ltcbtc-btcbtc-eosbtc-bchbtc&fiat=btc";
+$.ajax({
+  url: thirdQueryUrl,
+  method: "GET"
+}).then(function(res) {
+  renderPie(res);
 });
