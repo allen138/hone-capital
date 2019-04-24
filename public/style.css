@@ -77,6 +77,29 @@ footer{
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%)
 }
+.form-group{
+    position: relative;
+    margin: 0 auto;
+}
+#form-label{
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+#submit{
+    position: absolute;
+    right: -40px;
+    top: 35px;
+}
+.sorting{
+    margin-left: 400px;
+    margin-right: 10px;
+    font-weight: 620;
+    font-size: 16px;
+}
+.sortBtn{
+    margin-right: 15px;
+}
 @media (max-width: 1000px) {
     .grid{
         grid-template-columns: auto;
