@@ -1,5 +1,28 @@
 const key = "e9PqycN4UPM5OgJpDVHwPKpmvVnx3v";
-
+const graphBackgroundColor = [
+  "rgba(255, 206, 86, 0.2)",
+  "rgba(75, 192, 192, 0.2)",
+  "rgba(66, 134, 244, 0.2)",
+  "rgba(66, 244, 89, 0.2)",
+  "rgba(244, 66, 149, 0.2)",
+  "rgba(229, 66, 244, 0.2)",
+  "rgba(66, 244, 238, 0.2)",
+  "rgba(244, 226, 66, 0.2)",
+  "rgba(244, 66, 66, 0.2)",
+  "rgba(244, 179, 66, 0.2)"
+];
+const graphBorderColor = [
+  "rgba(255, 206, 86, 1)",
+  "rgba(75, 192, 192, 1)",
+  "rgba(66, 134, 244, 1)",
+  "rgba(66, 244, 89, 1)",
+  "rgba(244, 66, 149, 1)",
+  "rgba(229, 66, 244, 1)",
+  "rgba(66, 244, 238, 1)",
+  "rgba(244, 226, 66, 1)",
+  "rgba(244, 66, 66, 1)",
+  "rgba(244, 179, 66, 1)"
+]
 // bar graph
 
 function renderChart(res) {
@@ -19,30 +42,8 @@ function renderChart(res) {
         {
           label: ["BTC Price"],
           data: dataPrice,
-          backgroundColor: [
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(66, 134, 244, 0.2)",
-            "rgba(66, 244, 89, 0.2)",
-            "rgba(244, 66, 149, 0.2)",
-            "rgba(229, 66, 244, 0.2)",
-            "rgba(66, 244, 238, 0.2)",
-            "rgba(244, 226, 66, 0.2)",
-            "rgba(244, 66, 66, 0.2)",
-            "rgba(244, 179, 66, 0.2)"
-          ],
-          borderColor: [
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(66, 134, 244, 1)",
-            "rgba(66, 244, 89, 1)",
-            "rgba(244, 66, 149, 1)",
-            "rgba(229, 66, 244, 1)",
-            "rgba(66, 244, 238, 1)",
-            "rgba(244, 226, 66, 1)",
-            "rgba(244, 66, 66, 1)",
-            "rgba(244, 179, 66, 1)"
-          ],
+          backgroundColor: graphBackgroundColor,
+          borderColor: graphBorderColor,
           borderWidth: 1
         }
       ]
@@ -148,20 +149,8 @@ function renderPie(data) {
         {
           label: ["24h Volume"],
           data: dataVolume,
-          backgroundColor: [
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(66, 134, 244, 0.2)",
-            "rgba(66, 244, 89, 0.2)",
-            "rgba(244, 66, 149, 0.2)",
-            "rgba(255, 206, 86, 0.2)"
-          ],
-          borderColor: [
-            "rgba(75, 192, 192, 1)",
-            "rgba(66, 134, 244, 1)",
-            "rgba(66, 244, 89, 1)",
-            "rgba(244, 66, 149, 1)",
-            "rgba(255, 206, 86, 1)"
-          ],
+          backgroundColor: graphBackgroundColor,
+          borderColor: graphBorderColor,
           borderWidth: 1
         }
       ]
@@ -301,7 +290,7 @@ function sortPrice() {
   while (switching) {
     switching = false;
     dataRows = table.rows;
-    for (i = 1; i < (dataRows.length - 1); i++) {
+    for (i = 1; i < dataRows.length - 1; i++) {
       shouldSwitch = false;
       x = dataRows[i].getElementsByTagName("td")[2];
       y = dataRows[i + 1].getElementsByTagName("td")[2];

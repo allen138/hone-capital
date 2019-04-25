@@ -1,4 +1,4 @@
-# hone-capital
+# Cryptocurrency Data Analysis
 ## Objective
 Make a single page web application with the following base requirements:
 - a data-table showing the contents of the API calls.
