@@ -184,7 +184,7 @@ function renderPie(res) {
 
 // bubble graph
 
-function renderRandom(res) {
+function renderBubble(res) {
   let ctx = $("#myFourthChart");
   const data = res.Markets;
   let dataBubbles = [];
@@ -315,7 +315,7 @@ $.ajax({
 }).then(function(res) {
   createRow(res);
   renderChart(res);
-  renderRandom(res);
+  renderBubble(res);
 });
 
 let secondQueryUrl =
