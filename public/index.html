@@ -45,28 +45,25 @@
         <button id="submit" class="btn btn-outline-secondary">GO!</button>
       </div>
     </form>
-    <label class="table-label" for="table"
-      >Data Table
-      <!-- <span class="sorting">Sort Data By:</span>
-      <button class="sortPrice sortBtn btn btn-outline-secondary btn-sm">
-        Price
-      </button>
-      <button class="sortVolume sortBtn btn btn-outline-secondary btn-sm">
-        Volume
-      </button> -->
-    </label>
-    <table class="table">
-      <thred>
-        <tr>
-          <th scope="col">Label</th>
-          <th scope="col">Name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Volume(24h)</th>
-          <!-- <th scope="col">Timestamp</th> -->
-        </tr>
-      </thred>
-      <tbody id="table-data"></tbody>
+    <label class="table-label" for="table">Data Table </label>
+    <div class="sortingDiv">
+      <div class="absoluteDiv">
+        <span class="sorting">Sort:</span>
+        <button class="sortPrice btn btn-outline-secondary btn-sm">
+          Price
+        </button>
+      </div>
+    </div>
+    <table id="table-data" class="table">
+      <tr>
+        <th scope="col">Label</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Volume(24h)</th>
+        <!-- <th scope="col">Timestamp</th> -->
+      </tr>
     </table>
+
     <div class="grid">
       <div class="myChartDiv">
         <canvas id="myChart" width="400" height="400"></canvas>

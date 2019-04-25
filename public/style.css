@@ -25,7 +25,7 @@ body {
 }
 .table-label {
   font-size: 24px;
-  margin-left: 150px;
+  margin-left: 10%;
   font-weight: 700;
 }
 .table {
@@ -77,14 +77,18 @@ footer {
   right: -40px;
   top: 35px;
 }
+.sortingDiv{
+  position: relative;
+}
+.absoluteDiv{
+  position: absolute;
+  right: 10%;
+  top: -40px;
+}
 .sorting {
-  margin-left: 400px;
   margin-right: 10px;
   font-weight: 620;
   font-size: 16px;
-}
-.sortBtn {
-  margin-right: 15px;
 }
 @media (max-width: 1000px) {
   .grid {
@@ -142,6 +146,9 @@ footer {
   }
   #submit {
     right: 10%;
+  }
+  .sorting{
+    display: none;
   }
 }
 @media (max-width: 411px) {

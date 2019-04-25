@@ -281,12 +281,41 @@ const createRow = res => {
       $("<td>").text(data[i].Label),
       $("<td>").text(data[i].Name),
       $("<td>").text(data[i].Price),
-      $("<td>").text(data[i].Volume_24h),
+      $("<td>").text(data[i].Volume_24h)
       //$("<td>").text(moment.unix(data[i].Timestamp).format("lll"))
     );
     $("#table-data").append(newRow);
   }
 };
+
+// sort table by price
+
+$(".sortPrice").on("click", function() {
+  sortPrice();
+});
+
+function sortPrice() {
+  let table, dataRows, switching, i, x, y, shouldSwitch;
+  table = $("#table-data")[0];
+  switching = true;
+  while (switching) {
+    switching = false;
+    dataRows = table.rows;
+    for (i = 1; i < (dataRows.length - 1); i++) {
+      shouldSwitch = false;
+      x = dataRows[i].getElementsByTagName("td")[2];
+      y = dataRows[i + 1].getElementsByTagName("td")[2];
+      if (x.innerHTML < y.innerHTML) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      dataRows[i].parentNode.insertBefore(dataRows[i + 1], dataRows[i]);
+      switching = true;
+    }
+  }
+}
 
 // dopdown dynamic selection for currency
 
@@ -333,7 +362,11 @@ $.ajax({
   const removeExistingBtc = removeEhereum.filter(res => res.Name !== "Monero");
   dropdown(removeExistingBtc);
 });
-let thirdQueryUrl = "https://www.worldcoinindex.com/apiservice/v2getmarkets?key=" + key + "&fiat=btc"
+
+let thirdQueryUrl =
+  "https://www.worldcoinindex.com/apiservice/v2getmarkets?key=" +
+  key +
+  "&fiat=btc";
 $.ajax({
   url: thirdQueryUrl,
   method: "GET"
