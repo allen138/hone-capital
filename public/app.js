@@ -132,9 +132,8 @@ function renderGraph(data) {
 
 // pie graph
 
-function renderPie(res) {
+function renderPie(data) {
   let ctx = $("#myThirdChart");
-  const data = res.Markets;
   let dataLabels = [];
   let dataVolume = [];
   for (let i = 0; i < data.length; i++) {
@@ -175,7 +174,7 @@ function renderPie(res) {
       },
       title: {
         display: true,
-        text: "Top 5 Currencies 24h",
+        text: "Top Currencies 24h",
         fontSize: 32
       }
     }
@@ -334,16 +333,14 @@ $.ajax({
   const removeExistingBtc = removeEhereum.filter(res => res.Name !== "Monero");
   dropdown(removeExistingBtc);
 });
-
-let thirdQueryUrl =
-  "https://www.worldcoinindex.com/apiservice/ticker?key=" +
-  key +
-  "&label=ethbtc-ltcbtc-btcbtc-eosbtc-bchbtc&fiat=btc";
+let thirdQueryUrl = "https://www.worldcoinindex.com/apiservice/v2getmarkets?key=" + key + "&fiat=btc"
 $.ajax({
   url: thirdQueryUrl,
   method: "GET"
 }).then(function(res) {
-  renderPie(res);
+  const data = res.Markets[0];
+  const topFive = data.filter(res => res.Volume_24h >= 100000);
+  renderPie(topFive);
 });
 
 // onClick listener for dropdown, api call
