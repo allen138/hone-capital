@@ -94,6 +94,8 @@ When the user clicks "GO!" this triggers a listener click function that first va
     $("#validation-modal").modal("toggle");
   }
 ```
+#### Typewriter?
+Just some fun JavaScript, I added a typewritter simulator. In the jumbotron it simulates typing out currencies and phrases, then after a few seconds it erases them. I wont go over all the code in detail, but go app.js and about line 220, you can check out the function. Its pretty cool. 
 ### Future Development
 A good feature for this application would be to add the plugin DataTable, which supports pagination, sorting, and searching within the data table. 
 ## Tech Stack

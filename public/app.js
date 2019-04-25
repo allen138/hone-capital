@@ -364,7 +364,6 @@ $("#submit").on("click", function(e) {
     let newQuery = $(".form-control")
       .find(":selected")
       .val();
-    console.log(newQuery);
     let queryURL =
       "https://www.worldcoinindex.com/apiservice/ticker?key=" +
       key +
@@ -376,8 +375,6 @@ $("#submit").on("click", function(e) {
       method: "GET"
     }).then(function(res) {
       createRow(res);
-      // renderChart(res);
-      // renderRandom(res);
     });
   } else {
     $("#validation-modal").modal("toggle");
