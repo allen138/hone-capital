@@ -4,6 +4,7 @@ Make a single page web application with the following base requirements:
 - a data-table showing the contents of the API calls.
 - a query module with filters which enable the user to query a subset of the above datable.
 - minimum of one graph visualization of the data represented in the data table (ensure that the data is graphable).
+![Crypto](public/img/crypto.png)
 ## Tech Approach
 First steps where to contemplate the design. I wanted the app to be simple and efficient without excessive plugins or repeated code. I went with Bootstrap for easy templating and then jQuery and AJAX to fetch the data from the API and display it to the dom. The boilerplate consists of a public folder that holds the static files such as images and the CSS file as well as the HTML and JavaScript files. Even though this is a single page app, I decided to go ahead and make my own server with Express and Node. This is a very basic server that uses Express to render home page. This application is also responsive to most devices, even though it was difficult to get the table to render nicely on small, outdated devices such as the iphone5 and galaxy5, but other than that, it responds well.
 ### Making the Data Table
@@ -27,6 +28,7 @@ const createRow = res => {
 ```
 The timestamp is returned as unix timestamp from the API. I used moment.js to convert that time to a readable time such as, "April 24, 2019 4:45 PM". The other functions I mentioned are for the bar graph and the bubble graph.
 ###  Graphs
+![Graphs](public/img/cryptoGraphs.png)
 To render the graphs, I used a Chart.js. Chart.js is a great resource that displays beautiful and clean graphs and has many options as far as graphs go. In this application I utilized two bar graphs, a pie graph, and a bubble graph.
 #### Bar Graphs
 For the bar graph, it takes a function that passes the response from the API call. the response then gets destructured and looped over. For every index in the response, I pushed the name to the dataLabel array and pushed the price to the dataPrice array.
