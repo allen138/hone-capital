@@ -6,11 +6,11 @@ Make a single page web application with the following base requirements:
 - minimum of one graph visualization of the data represented in the data table (ensure that the data is graphable).
 ![Crypto](public/img/crypto.png)
 ## Tech Approach
-First steps where to contemplate the design. I wanted the app to be simple and efficient without excessive plugins or repeated code. I went with Bootstrap for easy templating and then jQuery and AJAX to fetch the data from the API and display it to the dom. The boilerplate consists of a public folder that holds the static files such as images and the CSS file as well as the HTML and JavaScript files. Even though this is a single page app, I decided to go ahead and make my own server with Express and Node. This is a very basic server that uses Express to render home page. This application is also mobile responsive to most devices.
+The first step was to contemplate the design. I wanted the app to be simple and efficient without excessive plugins or repeated code. I went with Bootstrap for easy templating and then jQuery and AJAX to fetch the data from the API and display it to the DOM. The boilerplate consists of a public folder that holds the static files such as images and the CSS file as well as the HTML and JavaScript files. Even though this is a single page app, I decided to go ahead and make my own server with Express and Node. This is a very basic server that uses Express to render home page. This application is also mobile responsive to most devices.
 ### Making the Data Table
-The API I chose for this application was https://www.worldcoinindex.com/apiservice. This API has a vast amount of data with multiple key/value pairs to make graph rendering possible. This API required a key to access and is attained through their website. This API has a four different queryUrls and I used three out of the four.
+The API I chose for this application was https://www.worldcoinindex.com/apiservice. This API has a vast amount of data with multiple key/value pairs to make graph rendering possible. This API requires a key to access the data and the key is attained through their website. This API has four different queryURLs and I used three out of the four.
 
-All the calls are "GET" requests and for the first queryURL it fetches specific tickers and returns the ticker label, name, price, volume and timestamp. Once the API call is made it then takes a function that passes the response. That function then calls createRow, renderChart, and renderBubble functions and passes the response to each of them. createRow function takes in the response, loops over the data, plugs in the data to the table data row, and appends that row to the table.  
+All the calls are "GET" requests and for the first queryURL it fetches specific tickers and returns the ticker label, name, price, volume and timestamp. Once the API call is made, it then takes a function that passes the response. That function then calls createRow, renderChart, and renderBubble functions and passes the response to each of them. The createRow function takes in the response, loops over the data, plugs in the data to the table data row, and appends that row to the table.  
 ```javascript
 const createRow = res => {
   const data = res.Markets;
@@ -26,12 +26,12 @@ const createRow = res => {
   }
 };
 ```
-The timestamp is returned as unix timestamp from the API. I used moment.js to convert that time to a readable time such as, "April 24, 2019 4:45 PM". The other functions I mentioned are for the bar graph and the bubble graph.
+The timestamp is returned as unix timestamp from the API. Use moment.js to convert that time to a readable time such as, "April 24, 2019 4:45 PM". The other functions mentioned are for the bar graph and the bubble graph.
 ###  Graphs
 ![Graphs](public/img/cryptoGraphs.png)
-To render the graphs, I used a Chart.js. Chart.js is a great resource that displays beautiful and clean graphs and has many options as far as graphs go. In this application I utilized two bar graphs, a pie graph, and a bubble graph.
+To render the graphs, use Chart.js. Chart.js is a great resource that displays beautiful and clean graphs and has many options as far as graphs go. In this application I utilized two bar graphs, a pie graph, and a bubble graph.
 #### Bar Graphs
-For the bar graph, it takes a function that passes the response from the API call. The response then gets destructured and looped over. For every index in the response, I pushed the name to the dataLabel array and pushed the price to the dataPrice array.
+For the bar graph, it takes a function that passes the response from the API call. The response then gets destructured and looped over. For every index in the response, push the name to the dataLabel array and push the price to the dataPrice array.
 ```javascript
   const data = res.Markets;
   let dataLabels = [];
@@ -41,7 +41,7 @@ For the bar graph, it takes a function that passes the response from the API cal
     dataPrice.push(data[i].Price);
   }
 ```
-With the data stored in a proper array, I can now continue to build the graph. The graphs are an object with many key/value pairs. Begin with the type (bar, bubble, pie, radar, ect.), labels and the value will be the dataLabels array, datasets which is the graphable data and in this case will be the dataPrice array. From there you can set the backgroundColor, borderColor, borderWidth, fontSizes, and scale the yAxis with the proper increments.
+With the data stored in a proper array, you can now continue to build the graph. The graphs are an object with many key/value pairs. Begin with the type (bar, bubble, pie, radar, ect.), labels and the value will be the dataLabels array, datasets which is the graphable data and in this case will be the dataPrice array. From there you can set the backgroundColor, borderColor, borderWidth, fontSizes, and scale the yAxis with the proper increments.
 #### Bubble Graph
 The bubble graph takes in the same data from the previous API call. Take the response, destructure, loop over the data and push each index of volume and price into the dataBubbles array.
 ```javascript
@@ -60,7 +60,7 @@ Not finding the data you need? This API spits back 2,400 cryptocurrencies, so to
  const filterResponse = res.Markets;
  const fiveThousandths = filterResponse.filter(res => res.Price_btc >= 0.005);
 ```
-After studying the other bar graphs, I noticed that higher btc prices were generally greater than 0.005. I used the filter method to find all the matching currencies that are greater than 0.005. The response went from 2,400 to 24. From there I filtered out the currencies that were already in the table. To make the query work I needed to remove the forward slash in the label and change it from upper case to lower case. The label is set as the value attribute and the name of the currency is the text the user can read.
+After studying the other bar graphs, I noticed that higher btc prices were generally greater than 0.005. Knowing this information, use the filter method to find all the matching currencies that are greater than 0.005. The response went from 2,400 to 24. From there, filter out the currencies that were already in the table. To make the query work remove the forward slash in the label and change it from upper case to lower case. The label is set as the value attribute and the name of the currency is the text the user can read.
 ```javascript
 const dropdown = res => {
   for (let i = 0; i < res.length; i++) {
@@ -104,7 +104,7 @@ function sortPrice() {
   table = $("#table-data")[0];
   switching = true;
 ```
-Create a recursive loop that passes switching. In the loop, set switching to false and set the dataRows equal to table.rows. Rows is a HTML Table Element property that returns a collection of all the rows in the table. Create a for loop that loops through the dataRows. Inside the for loop, set shouldSwitch to false, set x to the first index of the table data your analizing and y to the second data your analizing. Create an IF statement that checks if x is less than y and IF true, set shouldSwitch to true and break the loop.
+Create a recursive loop that passes switching. In the loop, set switching to false and set the dataRows equal to table.rows. Rows is a HTML Table Element property that returns a collection of all the rows in the table. Create a for loop that loops through the dataRows. Inside the for loop, set shouldSwitch to false, set x to the first index of the table data your analizing and y to the second data your analizing. Create an if statement that checks if x is less than y and IF true, set shouldSwitch to true and break the loop.
 ```javascript
   while (switching) {
     switching = false;
@@ -119,7 +119,7 @@ Create a recursive loop that passes switching. In the loop, set switching to fal
       }
     }
 ```
-Now a value needs to be switch on the table. Create an IF statement passing shouldSwitch and when shouldSwitch is true get the parentNode of the index of the dataRow and insert it before the other index, then set switching to true.
+Now a value needs to be switch on the table. Create an if statement passing shouldSwitch and when shouldSwitch is true get the parentNode of the index of the dataRow and insert it before the other index, then set switching to true.
 ```javascript
     if (shouldSwitch) {
       dataRows[i].parentNode.insertBefore(dataRows[i + 1], dataRows[i]);
